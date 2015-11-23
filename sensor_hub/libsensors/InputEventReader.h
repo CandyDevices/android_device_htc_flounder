@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
-
+#include <cstring>
 /*****************************************************************************/
 
 struct cw_event {
