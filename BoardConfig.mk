@@ -14,17 +14,14 @@
 # limitations under the License.
 #
 
-# Use the non-open-source parts, if they're present
--include vendor/htc/flounder/BoardConfigVendor.mk
 # Build a separate vendor.img
-TARGET_COPY_OUT_VENDOR := vendor
+TARGET_COPY_OUT_VENDOR := system
 
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := denver64
-TARGET_CPU_SMP := true
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
@@ -37,6 +34,8 @@ BUILD_EMULATOR := false
 
 TARGET_NO_BOOTLOADER := true
 
+BOARD_KERNEL_CMDLINE += androidboot.hardware=flounder
+
 TARGET_NO_RADIOIMAGE := true
 
 TARGET_BOARD_PLATFORM := tegra132
@@ -47,6 +46,8 @@ TARGET_BOOTLOADER_BOARD_NAME := flounder
 USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
 BOARD_DISABLE_TRIPLE_BUFFERED_DISPLAY_SURFACES := true
+
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2782920704
@@ -75,7 +76,6 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.flounder libhealthd.flounder
 BOARD_VENDOR_USE_SENSOR_HAL := sensor_hub
 
 # GPS related defines
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 TARGET_NO_RPC := true
 BOARD_USES_QCOM_HARDWARE_GPS := true
 
@@ -125,3 +125,6 @@ EXTENDED_FONT_FOOTPRINT := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
 MALLOC_IMPL := dlmalloc
+
+# Use the non-open-source parts, if they're present
+-include vendor/htc/flounder/BoardConfigVendor.mk
